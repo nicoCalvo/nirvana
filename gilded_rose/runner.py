@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
+import sys
 
-from gilded_rose import *
+from gilded_rose import (
+    GildedRose,
+    Item
+)
 
 if __name__ == "__main__":
     items = [
@@ -17,7 +21,7 @@ if __name__ == "__main__":
             ]
 
     days = 2
-    import sys
+    
     if len(sys.argv) > 1:
         days = int(sys.argv[1]) + 1
     for day in range(days):
