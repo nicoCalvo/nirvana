@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 
-
 class QualityUpdater:
     AGED_BRIE = "Aged Brie"
     BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert"
@@ -13,7 +12,7 @@ class QualityUpdater:
             return
         elif item.name == cls.AGED_BRIE:
             cls.aged_brie_quality_processor(item)
-        elif item.name  == cls.BACKSTAGE_PASSES:
+        elif item.name == cls.BACKSTAGE_PASSES:
             cls.backstage_pasess_quality_processor(item)
         else:
             cls.regular_item_processor(item)
@@ -35,17 +34,14 @@ class QualityUpdater:
     @staticmethod
     def backstage_pasess_quality_processor(item):
         if item.quality < 50:
-                item.quality += 1
+            item.quality += 1
         if item.sell_in < 11 and item.quality < 50:
             item.quality += 1
         if item.sell_in < 6 and item.quality < 50:
-                item.quality = item.quality + 1
+            item.quality = item.quality + 1
         item.sell_in = item.sell_in - 1
         if item.sell_in < 0:
             item.quality = item.quality - item.quality
-
-
-from copy import deepcopy
 
 
 class GildedRose(object):
@@ -56,7 +52,8 @@ class GildedRose(object):
     def update_quality(self):
         for item in self.items:
             QualityUpdater.process(item)
-            
+
+
 class Item:
     def __init__(self, name, sell_in, quality):
         self.name = name
